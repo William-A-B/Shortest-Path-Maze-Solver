@@ -1,11 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include <string>
+#include <iostream>
 
 std::string getKeyString(sf::Keyboard::Key key);
 
 int main()
 {
+    std::cout << "ShortestPathGame" << std::endl;
+
     auto window = sf::RenderWindow{ { 1920u, 1080u }, "CMake SFML Project" };
     window.setFramerateLimit(144);
 
