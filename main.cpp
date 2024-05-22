@@ -12,6 +12,14 @@ int main()
     auto window = sf::RenderWindow{ { 1920u, 1080u }, "CMake SFML Project" };
     window.setFramerateLimit(144);
 
+    sf::CircleShape circle(100, 10);
+    circle.setFillColor(sf::Color(50, 200, 150,255));
+//    circle.setOrigin(100.0f, 100.0f);
+    circle.setPosition(100.0f, 100.0f);
+
+    window.draw(circle);
+
+
     while (window.isOpen())
     {
         for (auto event = sf::Event{}; window.pollEvent(event);)
@@ -20,15 +28,21 @@ int main()
             {
                 window.close();
             }
-            else if (event.type == sf::Event::KeyPressed)
-            {
-                std::string keyString = getKeyString(event.key.code);
-                window.setTitle(keyString);
+            else if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Right) {
+                    circle.setPosition(circle.getPosition().x + 10, circle.getPosition().y);
+                }
+                else if (event.key.code == sf::Keyboard::Left) {
+                    circle.setPosition(circle.getPosition().x - 10, circle.getPosition().y);
+                }
             }
         }
 
+
+
         window.clear();
-        window.display();
+        window.draw(circle); // Draw the circle
+        window.display(); // Display the new frame
     }
 }
 
