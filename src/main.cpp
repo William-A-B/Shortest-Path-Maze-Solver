@@ -3,19 +3,31 @@
 #include <string>
 #include <iostream>
 #include "Utils/KeyBoardKeyMap.h"
+#include "GUI/GUI.h"
 
 sf::CircleShape createCircle(int radius, int pointCount);
+
+#define DEFAULT_CIRCLE_START_POS_X 100.0f;
+#define DEFAULT_CIRCLE_START_POS_Y 100.0f;
+
 
 int main()
 {
     std::cout << "ShortestPathGame" << std::endl;
 
-    auto window = sf::RenderWindow{ { 1920u, 1080u }, "CMake SFML Project" };
+    auto window = sf::RenderWindow{ { 1920u, 1080u }, "Shortest Path Maze Solver" };
     window.setFramerateLimit(144);
 
-    sf::CircleShape circle = createCircle(100, 1000);
+    sf::CircleShape circle = createCircle(100, 100);
 
-    window.draw(circle);
+    sf::Vector2f circlePosition(300, 200);
+    sf::Vector2f circleScale(1, 1);
+
+    circle.setPosition(circlePosition);
+    circle.setScale(circleScale);
+
+    float xVelocity = 0.5f;
+    float yVelocity = 0.5f;
 
     KeyBoardKeyMap keyMap();
 
@@ -27,15 +39,43 @@ int main()
             {
                 window.close();
             }
-            else if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::Right) {
+            else if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::Right)
+                {
                     circle.setPosition(circle.getPosition().x + 10, circle.getPosition().y);
                 }
-                else if (event.key.code == sf::Keyboard::Left) {
+                else if (event.key.code == sf::Keyboard::Left)
+                {
                     circle.setPosition(circle.getPosition().x - 10, circle.getPosition().y);
+                }
+                else if (event.key.code == sf::Keyboard::R)
+                {
+                    circlePosition.x = 100.0f;
+                    circlePosition.y = 100.0f;
+                }
+                else if (event.key.code == sf::Keyboard::Equal)
+                {
+                    circleScale.x = circleScale.x + 0.05;
+                    circleScale.y = circleScale.y + 0.05;
+                }
+                else if (event.key.code == sf::Keyboard::Hyphen)
+                {
+                    circleScale.x = circleScale.x - 0.05;
+                    circleScale.y = circleScale.y - 0.05;
                 }
             }
         }
+
+        // Circle Physics
+        circlePosition.x = circlePosition.x + xVelocity;
+        circlePosition.y = circlePosition.y + yVelocity;
+        circle.setPosition(circlePosition);
+
+        circle.setScale(circleScale);
+
+
+        // Render frame
         window.clear();
         window.draw(circle); // Draw the circle
         window.display(); // Display the new frame
