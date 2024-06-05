@@ -3,8 +3,11 @@
 #include <iostream>
 #include "Utils/KeyBoardKeyMap.h"
 #include "GUI/GUI.h"
+#include "datastructures/Graph.h"
 
 sf::CircleShape createCircle(int radius, int pointCount);
+
+void runAlgorithms();
 
 #define DEFAULT_CIRCLE_START_POS_X 100.0f;
 #define DEFAULT_CIRCLE_START_POS_Y 100.0f;
@@ -29,6 +32,8 @@ int main()
     float yVelocity = 0.5f;
 
     KeyBoardKeyMap keyMap();
+
+    runAlgorithms();
 
     while (window.isOpen())
     {
@@ -79,6 +84,12 @@ int main()
         window.draw(circle); // Draw the circle
         window.display(); // Display the new frame
     }
+}
+
+void runAlgorithms() {
+    Graph graph(10, 10);
+    graph.populateGraph();
+    graph.printGraph();
 }
 
 sf::CircleShape createCircle(int radius, int pointCount)

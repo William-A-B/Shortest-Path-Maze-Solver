@@ -1,0 +1,14 @@
+//
+// Created by William-A-B on 05/06/2024.
+//
+
+#ifndef SHORTESTPATHGAME_DATASTRUCTURE_H
+#define SHORTESTPATHGAME_DATASTRUCTURE_H
+
+
+class DataStructure {
+
+};
+
+
+#endif //SHORTESTPATHGAME_DATASTRUCTURE_H

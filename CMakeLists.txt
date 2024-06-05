@@ -9,7 +9,13 @@ add_executable(ShortestPathGame src/main.cpp
         src/GUI/GUI.cpp
         src/GUI/GUI.h
         src/GUI/MainMenu.cpp
-        src/GUI/MainMenu.h)
+        src/GUI/MainMenu.h
+        src/algorithms/Dijkstra.cpp
+        src/algorithms/Dijkstra.h
+        src/datastructures/DataStructure.cpp
+        src/datastructures/DataStructure.h
+        src/datastructures/Graph.cpp
+        src/datastructures/Graph.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/Users/wabet/Programs/SFML-2.6.1/lib/cmake/SFML)
