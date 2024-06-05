@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 
-#include <string>
 #include <iostream>
 #include "Utils/KeyBoardKeyMap.h"
 #include "GUI/GUI.h"
